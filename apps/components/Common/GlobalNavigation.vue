@@ -37,6 +37,11 @@ export default class GlobalNavigation extends Vue {
       },
       {
         id: 4,
+        link: 'PlayGroundOfGet',
+        letter: 'Playground of GET.'
+      },
+      {
+        id: 5,
         link: 'MethodComparison',
         letter: 'Method Comparison.'
       }
