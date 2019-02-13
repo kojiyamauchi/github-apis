@@ -26,54 +26,39 @@ import axios from 'axios'
 export default class Children extends Vue {
   @Prop({ type: Object, default: undefined }) propDataBase?: { [key: string]: string }
   // Types.
-  propDataBaseAry: object[]
-  stateDataBaseAry: object[]
 
   constructor() {
     super()
-    this.propDataBaseAry = []
-    this.stateDataBaseAry = []
-  }
-
-  get addPropDataBases() {
-    return this.propDataBaseAry
-  }
-
-  get addStateDataBases() {
-    return this.stateDataBaseAry
-  }
-
-  // Don't Work.
-  async asyncData() {
-    const dataBase = await axios.get('https://api.github.com/users/kojiyamauchi')
-    console.log(dataBase.data)
   }
 
   // Page Component's Require AsyncData() Props Data.
-  processingPropDataBase() {
-    this.propDataBaseAry = Object.keys(this.propDataBase!).map((info, index) => {
+  get addPropDataBases() {
+    const propDataBaseAry = Object.keys(this.propDataBase!).map((info, index) => {
       const createObj = {
         ID: index + 1,
         API: info + ':' + this.propDataBase![info]
       }
       return createObj
     })
+    return propDataBaseAry
   }
 
   // Page Component's Require fetch() Store Data.
-  processingStateDataBase() {
-    this.stateDataBaseAry = Object.keys(this.$store.state.stateDataBase!).map((info, index) => {
+  get addStateDataBases() {
+    const stateDataBaseAry = Object.keys(this.$store.state.stateDataBase!).map((info, index) => {
       const createObj = {
         ID: index + 1,
         API: info + ':' + this.$store.state.stateDataBase![info]
       }
       return createObj
     })
+    return stateDataBaseAry
   }
 
-  mounted() {
-    this.processingPropDataBase()
-    this.processingStateDataBase()
+  // Don't Work.
+  async asyncData() {
+    const dataBase = await axios.get('https://api.github.com/users/kojiyamauchi')
+    console.log(dataBase.data)
   }
 }
 </script>
