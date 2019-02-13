@@ -17,6 +17,7 @@
       :propDataBase = 'addDataBase'
       @getKey='checkKey'
       )
+    PageBack
 </template>
 
 <script lang="ts">
@@ -24,11 +25,13 @@ import { Component, Vue } from 'nuxt-property-decorator'
 import axios from 'axios'
 import DisplayField from '@/components/PlayGroundOfGet/DisplayField.vue'
 import SelectField from '@/components/PlayGroundOfGet/SelectField.vue'
+import PageBack from '@/components/Common/PageBack.vue'
 
 @Component({
   components: {
     DisplayField,
-    SelectField
+    SelectField,
+    PageBack
   }
 })
 export default class PlayGroundOfGet extends Vue {

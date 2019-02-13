@@ -7,6 +7,11 @@
       :to='navigationLink.link'
       )
       | {{ navigationLink.letter }}
+    a(
+      class='global-link'
+      href='https://github.com/kojiyamauchi/github-apis'
+      )
+      | Back to GitHub.
 </template>
 
 <script lang="ts">

@@ -12,6 +12,7 @@
     Children(
       :propDataBase = 'addDataBases'
       )
+    PageBack
 </template>
 
 <script lang="ts">
@@ -19,11 +20,13 @@ import { Component, Vue } from 'nuxt-property-decorator'
 import axios from 'axios'
 import Heading from '@/components/MethodComparison/Heading.vue'
 import Children from '@/components/MethodComparison/Children.vue'
+import PageBack from '@/components/Common/PageBack.vue'
 
 @Component({
   components: {
     Heading,
-    Children
+    Children,
+    PageBack
   }
 })
 export default class extends Vue {
@@ -61,6 +64,8 @@ export default class extends Vue {
   justify-content center
   align-items center
   text-align center
+  word-break break-word
+  padding 0 20px
 .heading2
   font-size 20px
   color red
