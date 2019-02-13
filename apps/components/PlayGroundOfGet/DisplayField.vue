@@ -29,7 +29,7 @@ export default class DisplayField extends Vue {
 <style lang="stylus" scoped>
 .display-field
   display block
-  min-width 462px
+  width 80%
   height 40px
   line-height 40px
   margin 0 0 30px
@@ -37,4 +37,9 @@ export default class DisplayField extends Vue {
   border solid 1px rgba(0,0,0,0.5)
   border-radius 4px
   box-shadow 1px 1px 1px rgba(0,0,0,0.25)
+  overflow hidden
+  text-overflow ellipsis
+  +isDesktop()
+    width auto
+    min-width 462px
 </style>

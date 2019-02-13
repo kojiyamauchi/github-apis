@@ -49,6 +49,8 @@ export default class SelectField extends Vue {
 <style lang="stylus" scoped>
 .select-field
   display block
+  width 80%
+  height 40px
   margin 0 0 30px
   position relative
   &:after
@@ -58,14 +60,19 @@ export default class SelectField extends Vue {
     top 50%
     right 5px
     transform translateY(-50%) rotateZ(90deg)
+  +isDesktop()
+    width auto
+    min-width 462px
 .select
   font-size 16px
   color #555
-  min-width 462px
-  height 40px
+  width 100%
+  height 100%
   background-color transparent
   padding 0 20px
   border solid 1px rgba(0,0,0,0.5)
   border-radius 4px
   box-shadow 1px 1px 1px rgba(0,0,0,0.25)
+  overflow hidden
+  text-overflow ellipsis
 </style>

@@ -66,7 +66,9 @@ export default class PlayGroundOfGet extends Vue {
   text-align center
 .heading
   font-size 24px
+  padding 0 10%
 .description
   line-height 1.5em
   margin 0 0 30px
+  padding 0 10%
 </style>
