@@ -1,17 +1,56 @@
 <template lang="pug">
   .playground-of-get
-    span.todo
-      | TODO.
+    h1.heading
+      | Playground of GET #1. 🚶‍
+    p.description
+      br
+      | This Page is Require 'asyncData()' on Page Component.
+      br
+      | Carrying Data to Page Component <=> Children Component.
+      br
+      | Not Really Gooooood.
+    DisplayField(
+      :propDataBase = 'addDataBase'
+      :propKey = 'addKey'
+      )
+    SelectField(
+      :propDataBase = 'addDataBase'
+      @getKey='checkKey'
+      )
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-@Component({})
+import axios from 'axios'
+import DisplayField from '@/components/PlayGroundOfGet/DisplayField.vue'
+import SelectField from '@/components/PlayGroundOfGet/SelectField.vue'
+
+@Component({
+  components: {
+    DisplayField,
+    SelectField
+  }
+})
 export default class PlayGroundOfGet extends Vue {
   // Types.
+  key: string
 
   constructor() {
     super()
+    this.key = ''
+  }
+
+  async asyncData() {
+    const dataBase = await axios.get('https://api.github.com/users/kojiyamauchi')
+    return { addDataBase: dataBase.data }
+  }
+
+  checkKey(arg: string) {
+    return (this.key = arg)
+  }
+
+  get addKey() {
+    return this.key
   }
 }
 </script>
@@ -21,8 +60,13 @@ export default class PlayGroundOfGet extends Vue {
   width 100%
   height 100vh
   display flex
+  flex-direction column
   justify-content center
   align-items center
-.todo
-  transform translateY(-60%)
+  text-align center
+.heading
+  font-size 24px
+.description
+  line-height 1.5em
+  margin 0 0 30px
 </style>
