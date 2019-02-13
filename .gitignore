@@ -84,7 +84,7 @@ dist
 sw.*
 
 # My Added.
-GITHUB_TOKEN_for_TravisCI.txt
+access-tokens.txt
 .DS_Store
 .history
 server/cert.pem
