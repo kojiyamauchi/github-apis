@@ -1,7 +1,7 @@
 <template lang="pug">
   .playground-of-get
     h1.heading
-      | Playground of GET #1. 🚶‍
+      | Playground of GET. 🚶‍
     p.description
       br
       | This Page is Require 'asyncData()' on Page Component.
