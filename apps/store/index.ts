@@ -28,7 +28,7 @@ export const mutations: MutationTree<State> = {
   offResize(stateArg: State) {
     stateArg.isResize = false
   },
-  onDataBase(stateArg: State, payload: any) {
+  onDataBase(stateArg: State, payload: {}) {
     stateArg.stateDataBase = payload
   }
 }
