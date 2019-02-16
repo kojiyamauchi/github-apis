@@ -8,7 +8,7 @@
       br
       | Carrying Data to Page Component <=> Children Component.
       br
-      | Not Really Gooooood.
+      | Props, Props Emit.
     DisplayField(
       :propDataBase = 'addDataBase'
       :propKey = 'addKey'
