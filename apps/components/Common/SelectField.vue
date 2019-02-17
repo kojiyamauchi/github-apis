@@ -31,7 +31,7 @@ export default class SelectField extends Vue {
       const createObj = {
         id: index + 1,
         value: info,
-        letter: info.toUpperCase().replace('_', ' ')
+        letter: info.toUpperCase().replace(/_/g, ' ')
       }
       if (createObj.id === 1) this.selected = createObj.value
       return createObj
