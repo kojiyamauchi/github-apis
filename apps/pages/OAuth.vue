@@ -6,7 +6,6 @@
       br
       | TODO.
       br
-      | {{ inToken }}
     template(
       v-if='loading'
       )
@@ -21,15 +20,26 @@
       v-else
       )
       DisplayGetToken
+      DisplayField(
+        :propDataBase = 'adddDataBase'
+        :propKey = 'addKey'
+        )
+      SelectField(
+        :propDataBase = 'adddDataBase'
+        @getKey='checkKey'
+        )
     PageBack
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
 import firebase, { GitHubProvider } from '@/plugins/FireBase'
+import axios from 'axios'
 import Loading from '@/components/OAuth/Loading.vue'
 import GetToken from '@/components/OAuth/GetToken.vue'
 import DisplayGetToken from '@/components/OAuth/DisplayGetToken.vue'
+import DisplayField from '@/components/Common/DisplayField.vue'
+import SelectField from '@/components/Common/SelectField.vue'
 import PageBack from '@/components/Common/PageBack.vue'
 
 @Component({
@@ -37,6 +47,8 @@ import PageBack from '@/components/Common/PageBack.vue'
     Loading,
     GetToken,
     DisplayGetToken,
+    DisplayField,
+    SelectField,
     PageBack
   }
 })
@@ -45,16 +57,27 @@ export default class OAuth extends Vue {
   result: any
   inToken: string | null
   loading: boolean
+  API_BASE_URL: string
+  key: string
+  adddDataBase: {} | null
 
   constructor() {
     super()
     this.result = null
     this.inToken = null
     this.loading = true
+    this.API_BASE_URL = 'https://api.github.com'
+    this.key = ''
+    this.adddDataBase = null
   }
 
-  getToken() {
-    firebase.auth().signInWithRedirect(GitHubProvider)
+  async getAPI() {
+    const request = axios.create({
+      baseURL: this.API_BASE_URL,
+      headers: { Authorization: `token ${this.inToken}` }
+    })
+    const dataBase = await request.get('/user')
+    return (this.adddDataBase = dataBase.data)
   }
 
   /*
@@ -65,12 +88,25 @@ export default class OAuth extends Vue {
   async checkOAuth() {
     this.result = await firebase.auth().getRedirectResult()
     if (this.result.credential) {
-      this.inToken = this.result.credential.accessToken
+      this.inToken = await this.result.credential.accessToken
+      await this.getAPI()
       this.loading = false
     } else {
       this.loading = false
     }
     return this.inToken
+  }
+
+  getToken() {
+    firebase.auth().signInWithRedirect(GitHubProvider)
+  }
+
+  checkKey(arg: string) {
+    return (this.key = arg)
+  }
+
+  get addKey() {
+    return this.key
   }
 
   mounted() {
