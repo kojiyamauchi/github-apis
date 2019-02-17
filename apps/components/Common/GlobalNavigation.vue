@@ -37,8 +37,8 @@ export default class GlobalNavigation extends Vue {
       },
       {
         id: 3,
-        link: '/',
-        letter: 'TODO.'
+        link: 'OAuth',
+        letter: 'GitHub’s OAuth & Get Token, on FireBase.'
       },
       {
         id: 4,

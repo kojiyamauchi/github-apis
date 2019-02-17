@@ -1,14 +1,14 @@
 <template lang="pug">
   .playground-of-get
     h1.heading
-      | Playground of GET #1. 🚶‍
+      | Playground of GET. 🚶‍
     p.description
       br
       | This Page is Require 'asyncData()' on Page Component.
       br
       | Carrying Data to Page Component <=> Children Component.
       br
-      | Not Really Gooooood.
+      | Props, Props Emit.
     DisplayField(
       :propDataBase = 'addDataBase'
       :propKey = 'addKey'
@@ -23,8 +23,8 @@
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
 import axios from 'axios'
-import DisplayField from '@/components/PlayGroundOfGet/DisplayField.vue'
-import SelectField from '@/components/PlayGroundOfGet/SelectField.vue'
+import DisplayField from '@/components/Common/DisplayField.vue'
+import SelectField from '@/components/Common/SelectField.vue'
 import PageBack from '@/components/Common/PageBack.vue'
 
 @Component({
