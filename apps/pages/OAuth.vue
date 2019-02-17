@@ -4,7 +4,7 @@
       | GitHub’s OAuth &amp; Get Token, on FireBase. 🍵
     p.description
       br
-      | TODO.
+      | Sample Test Sample Test.
       br
     template(
       v-if='loading'
