@@ -24,6 +24,7 @@ export default class DisplayGetToken extends Vue {
   line-height 40px
   color #fff
   background-color #555
+  margin 0 0 20px 0
   padding 0 20px
   border solid 1px rgba(0,0,0,0.5)
   border-radius 4px
