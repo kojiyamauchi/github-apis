@@ -8,7 +8,7 @@ import { Component, Prop, Watch, Vue } from 'nuxt-property-decorator'
 
 @Component({})
 export default class DisplayField extends Vue {
-  @Prop({ type: Object, default: undefined }) propDataBase?: { [key: string]: string }
+  @Prop({ type: Object, default: null }) propDataBase?: { [key: string]: string }
   @Prop({ type: String, default: null }) propKey?: string
 
   // Types.

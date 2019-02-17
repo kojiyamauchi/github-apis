@@ -17,7 +17,7 @@ import { Component, Prop, Watch, Vue } from 'nuxt-property-decorator'
 
 @Component({})
 export default class SelectField extends Vue {
-  @Prop({ type: Object, default: undefined }) propDataBase?: {}
+  @Prop({ type: Object, default: null }) propDataBase?: {}
   // Types.
   selected: string | null
 
@@ -72,9 +72,12 @@ export default class SelectField extends Vue {
   padding 0 20px
   border solid 1px rgba(0,0,0,0.5)
   border-radius 4px
-  box-shadow 1px 1px 1px rgba(0,0,0,0.25)
   overflow hidden
   text-overflow ellipsis
+  box-shadow 1px 1px 1px rgba(0,0,0,0.25)
+  transition border 0.25s ease-in
   &:hover
     cursor pointer
+    border solid 1px rgba(0, 241, 255, 0.5)
+    transition border 0.25s ease-out
 </style>
