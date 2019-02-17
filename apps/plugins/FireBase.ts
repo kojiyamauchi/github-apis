@@ -5,6 +5,7 @@ let config
 
 if (process.env.NODE_ENV === 'GITHUB_PAGES') {
   // For GitHub Pages.
+  console.log('GitHub Pages!')
   config = {
     apiKey: 'AIzaSyBjwAEriPEf8Td0mMN5usgGZhqhMz4pDBM',
     authDomain: 'github-apis-on-github-pages.firebaseapp.com',
@@ -15,6 +16,7 @@ if (process.env.NODE_ENV === 'GITHUB_PAGES') {
   }
 } else {
   // For Localhost.
+  console.log('Localhost!')
   config = {
     apiKey: 'AIzaSyBnV-pnCTuluBFMYICg7pNgpoQ_4Z-k5xY',
     authDomain: 'github-apis.firebaseapp.com',
