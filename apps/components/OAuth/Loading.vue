@@ -21,7 +21,7 @@ export default class Loading extends Vue {
   }
 
   get addLetters() {
-    return Array.from(this.letter).map((info, index) => {
+    return Array.from(this.letter, (info, index) => {
       const createObj = {
         id: index + 1,
         letter: info
@@ -31,9 +31,9 @@ export default class Loading extends Vue {
   }
 
   letterBounce() {
-    Array.from(this.$el.children).map(async (info, index) => {
+    Array.from(this.$el.children, async (selector, index) => {
       await this.$mixins.sleep(75 * index)
-      info.classList.add('is-active')
+      selector.classList.add('is-active')
     })
   }
 
