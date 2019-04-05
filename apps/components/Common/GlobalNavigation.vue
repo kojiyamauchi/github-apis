@@ -27,26 +27,16 @@ export default class GlobalNavigation extends Vue {
     this.navigationLinks = [
       {
         id: 1,
-        link: '/',
-        letter: 'TODO.'
-      },
-      {
-        id: 2,
-        link: '/',
-        letter: 'TODO.'
-      },
-      {
-        id: 3,
         link: 'OAuth',
         letter: 'GitHub’s OAuth & Get Token, on FireBase.'
       },
       {
-        id: 4,
+        id: 2,
         link: 'PlayGroundOfGet',
         letter: 'Playground of GET.'
       },
       {
-        id: 5,
+        id: 3,
         link: 'MethodComparison',
         letter: 'Method Comparison.'
       }
