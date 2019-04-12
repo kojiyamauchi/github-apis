@@ -8,6 +8,9 @@
 import { Component, Vue } from 'nuxt-property-decorator'
 import Heading from '@/components/Top/Heading.vue'
 import GlobalNavigation from '@/components/Common/GlobalNavigation.vue'
+import { VueConstructor } from 'vue'
+import { Mixins } from 'vue-mixin-decorator'
+import { CheckScreen } from '@/mixins/CheckScreen'
 
 @Component({
   components: {
@@ -15,7 +18,7 @@ import GlobalNavigation from '@/components/Common/GlobalNavigation.vue'
     GlobalNavigation
   }
 })
-export default class extends Vue {
+export default class extends Mixins<CheckScreen>(CheckScreen) {
   // Types.
 
   constructor() {

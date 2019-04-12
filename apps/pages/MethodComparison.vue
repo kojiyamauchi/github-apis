@@ -21,6 +21,9 @@ import axios from 'axios'
 import Heading from '@/components/MethodComparison/Heading.vue'
 import Children from '@/components/MethodComparison/Children.vue'
 import PageBack from '@/components/Common/PageBack.vue'
+import { VueConstructor } from 'vue'
+import { Mixins } from 'vue-mixin-decorator'
+import { CheckScreen } from '@/mixins/CheckScreen'
 
 @Component({
   components: {
@@ -29,7 +32,7 @@ import PageBack from '@/components/Common/PageBack.vue'
     PageBack
   }
 })
-export default class extends Vue {
+export default class MethodComparison extends Mixins<CheckScreen>(CheckScreen) {
   // Types.
 
   constructor() {

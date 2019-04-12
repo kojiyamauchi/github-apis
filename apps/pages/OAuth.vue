@@ -6,19 +6,11 @@
       br
       | Sample Test Sample Test.
       br
-    template(
-      v-if='loading'
-      )
+    template(v-if='loading')
       Loading
-    template(
-      v-else-if='!inToken'
-      )
-      GetToken(
-        @click.native='getToken'
-      )
-    template(
-      v-else
-      )
+    template(v-else-if='!inToken')
+      GetToken(@click.native='getToken')
+    template(v-else)
       DisplayGetToken
       DisplayField(
         :propDataBase = 'adddDataBase'
@@ -41,6 +33,9 @@ import DisplayGetToken from '@/components/OAuth/DisplayGetToken.vue'
 import DisplayField from '@/components/Common/DisplayField.vue'
 import SelectField from '@/components/Common/SelectField.vue'
 import PageBack from '@/components/Common/PageBack.vue'
+import { VueConstructor } from 'vue'
+import { Mixins } from 'vue-mixin-decorator'
+import { CheckScreen } from '@/mixins/CheckScreen'
 
 @Component({
   components: {
@@ -52,7 +47,7 @@ import PageBack from '@/components/Common/PageBack.vue'
     PageBack
   }
 })
-export default class OAuth extends Vue {
+export default class OAuth extends Mixins<CheckScreen>(CheckScreen) {
   // Types.
   result: any
   inToken: string | null
@@ -111,6 +106,14 @@ export default class OAuth extends Vue {
 
   mounted() {
     this.checkOAuth()
+  }
+
+  beforeRouteEnter(to: any, from: any, next: any) {
+    next()
+    console.log('Call Navigation Guard')
+    console.log(to)
+    console.log(from)
+    console.log(next)
   }
 }
 </script>

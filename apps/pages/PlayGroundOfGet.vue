@@ -26,6 +26,9 @@ import axios from 'axios'
 import DisplayField from '@/components/Common/DisplayField.vue'
 import SelectField from '@/components/Common/SelectField.vue'
 import PageBack from '@/components/Common/PageBack.vue'
+import { VueConstructor } from 'vue'
+import { Mixins } from 'vue-mixin-decorator'
+import { CheckScreen } from '@/mixins/CheckScreen'
 
 @Component({
   components: {
@@ -34,7 +37,7 @@ import PageBack from '@/components/Common/PageBack.vue'
     PageBack
   }
 })
-export default class PlayGroundOfGet extends Vue {
+export default class PlayGroundOfGet extends Mixins<CheckScreen>(CheckScreen) {
   // Types.
   key: string
 
