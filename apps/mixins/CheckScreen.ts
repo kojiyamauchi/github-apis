@@ -23,7 +23,7 @@ export class CheckScreen extends Vue {
 
   // PC Only.
   checkResize() {
-    if (!navigator.userAgent.match(this.checkMobile)) {
+    if (!this.checkMobile.test(navigator.userAgent)) {
       if (this.$store.state.isLandscape) return this.$store.commit('offLandscape')
       if (!this.$store.state.isResize) return this.$store.commit('onResize')
       clearTimeout(this.timeID!)
@@ -34,12 +34,16 @@ export class CheckScreen extends Vue {
   }
 
   created() {
-    this.checkDirection()
-    window.addEventListener('orientationchange', this.checkDirection)
-    window.addEventListener('resize', this.checkResize)
+    if (process.browser) {
+      this.checkDirection()
+      window.addEventListener('orientationchange', this.checkDirection)
+      window.addEventListener('resize', this.checkResize)
+    }
   }
 
   beforeDestroy() {
-    window.removeEventListener('resize', this.checkResize)
+    if (process.browser) {
+      window.removeEventListener('resize', this.checkResize)
+    }
   }
 }
